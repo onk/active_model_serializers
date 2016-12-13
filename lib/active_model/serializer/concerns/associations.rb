@@ -85,7 +85,7 @@ module ActiveModel
       #
       def associations(include_directive = ActiveModelSerializers.default_include_directive, include_slice = nil)
         include_slice ||= include_directive
-        return unless object
+        return [] unless object
 
         Enumerator.new do |y|
           self.class._reflections.values.each do |reflection|

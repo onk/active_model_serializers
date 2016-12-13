@@ -23,6 +23,11 @@ module ActiveModel
         @comment_serializer = CommentSerializer.new(@comment)
       end
 
+      def test_associations_return_enumerable
+        assert(@post_serializer.associations.class < Enumerable)
+        assert(PostSerializer.new(nil).associations.class < Enumerable)
+      end
+
       def test_has_many_and_has_one
         @author_serializer.associations.each do |association|
           key = association.key
